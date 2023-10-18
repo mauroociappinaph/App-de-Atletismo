@@ -14,6 +14,8 @@ Esta aplicación está diseñada para ayudar a los jueces de atletismo a gestion
 - **Mongoose**: Biblioteca de modelado de objetos para MongoDB.
 - **Redux Toolkit**: Biblioteca para la gestión del estado de la aplicación.
 - **Express**: Framework de aplicaciones web para Node.js.
+- **Bcrypt**: Biblioteca para encriptar contrasenias.
+- 
 
 ## Características Principales
 
