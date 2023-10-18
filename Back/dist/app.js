@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 // Crea una instancia de Express
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(express_1.default.json());
 // Middleware de registro de solicitude
