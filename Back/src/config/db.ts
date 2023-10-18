@@ -1,18 +1,17 @@
-import mongoose, { ConnectOptions, Partial } from 'mongoose';
+import mongoose from 'mongoose';
+require('dotenv').config();
 
 export const connectDB = async () => {
-    const options: Partial<ConnectOptions> = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    };
-    const url = "mongodb+srv://ciappinamaurooj:k65Nav1haGWnZTlR@clusteratletismo.vltbelw.mongodb.net/";
-
+    const url = process.env.MONGODB_URL;
+    if (!url) {
+        console.log('La variable de entorno MONGODB_URL no está configurada.');
+        process.exit(1);
+    }
     try {
-        await mongoose.connect(url, options);
+        const db = await mongoose.connect(url);
+        console.log(`Conectado a la base de datos: ${db.connection.db.databaseName}`);
     } catch (error) {
         console.log(error);
         process.exit(1);
     }
 }
-
-
