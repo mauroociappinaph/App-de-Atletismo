@@ -1,8 +1,8 @@
 import { prop, getModelForClass } from "@typegoose/typegoose";
 
-class Result {
+class ResultsOne {
   @prop({ required: true })
-  athlete: string;
+  name: string;
 
   @prop({ required: true })
   competition: string;
@@ -20,4 +20,4 @@ class Result {
   date: Date;
 }
 
-export const ResultModel = getModelForClass(Result);
+export const ResultModel = getModelForClass(ResultsOne);
