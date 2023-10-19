@@ -2,7 +2,7 @@
 import express, { Application } from 'express';
 import morgan from 'morgan';
 import {connectDB} from "./config/db";
-import resultsRouter from './routes/results/Competition 1/IndexResults'
+import resultsRouter from './routes/results/IndexResults'
 
 
 // Crea una instancia de Express

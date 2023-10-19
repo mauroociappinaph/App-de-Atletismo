@@ -69,3 +69,19 @@ En resumen, esta aplicación está diseñada para simplificar y mejorar la gesti
 ---
 
 *Este archivo README.md proporciona una descripción general de la aplicación de Gestión de Competencias de Atletismo. Para obtener información detallada sobre cómo configurar y utilizar la aplicación, consulte la documentación correspondiente.*
+
+
+
+
+COMPETENCIAS DE ATLETISMO (COMPETENCIA 1)
+SALTO - JABALINA 
+RESULTADO 
+MEDIDA - DISTANCIA - Y OTRO - ALTURA 
+
+
+
+
+COMPETENCIAS DE ATLETISMO (COMPETENCIA 2)
+SALTO 
+RESULTADO 
+MEDIDA - DISTANCIA - Y OTRO - OTRO 2 - 

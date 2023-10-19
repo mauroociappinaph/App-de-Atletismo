@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 import getAllResultsRouter from './getAllResults';
-//import createResultRouter from './createResult';
+import createResultRouter from './createResults';
 //import updateResultRouter from './updateResult';
 //import deleteResultRouter from './deleteResult';
 
@@ -15,7 +15,7 @@ router.get('/getAll', getAllResultsRouter);
 router.use('/getAll', getAllResultsRouter);
 
 // Ruta para crear un nuevo resultado
-// router.use('/create', createResultRouter);
+ router.use('/create', createResultRouter);
 
 // Ruta para actualizar un resultado existente
 // router.use('/update', updateResultRouter);
