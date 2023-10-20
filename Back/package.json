@@ -1,0 +1,19 @@
+{
+  "name": "app-atletismo",
+  "version": "1.0.0",
+  "description": "Aplicación Full Satack de Atletismo.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauroociappinaph/App-de-Atletismo.git"
+  },
+  "author": "Mauro Ciappina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauroociappinaph/App-de-Atletismo/issues"
+  },
+  "homepage": "https://github.com/mauroociappinaph/App-de-Atletismo#readme"
+}
