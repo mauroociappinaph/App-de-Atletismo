@@ -1,7 +1,6 @@
-// Crea una base de datos con moongoose 
+// Crea una base de datos con mongoose 
 
 import mongoose from 'mongoose';
-
     const conectarDB = async () => {
         try {
            const db = await mongoose.connect(process.env.DB_URL, {
