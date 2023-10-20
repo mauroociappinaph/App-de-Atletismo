@@ -1,13 +1,12 @@
-
-import express from 'express';
-import conectarDB from './config/db.js';
-import dotenv from 'dotenv';
+import express from "express";
+import conectarDB from "./config/db.js";
+import dotenv from "dotenv";
 
 const app = express();
 
 const PORT = process.env.PORT || 4000;
 dotenv.config();
-//NOTE - Conexión a la base de datos 
+//NOTE - Conexión a la base de datos
 conectarDB();
 
 //NOTE - Creación del servidor.
@@ -16,13 +15,11 @@ app.listen(PORT, () => {
 });
 
 //REVIEW - Ruta especifica
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
- 
 
 //REVIEW - Ruta general
-app.use('/', (req, res) => {
-    res.send('Hello World!');
-  });
-
+app.use("/", (req, res) => {
+  res.send("Hello World!");
+});
