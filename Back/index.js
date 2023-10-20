@@ -1,6 +1,6 @@
 
 import express from 'express';
-import conectarDB from './config/db.js';
+import conectarToDB from './config/db.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
@@ -14,7 +14,7 @@ app.use(cors());
 dotenv.config();
 
 //NOTE - Conexión a la base de datos 
-conectarDB();
+conectarToDB();
 
 //NOTE - Creación del servidor.
 app.listen(PORT, () => {
