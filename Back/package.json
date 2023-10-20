@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/mauroociappinaph/App-de-Atletismo#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "env": "^0.0.2",
     "express": "^4.18.2",
     "mongoose": "^7.6.3"
