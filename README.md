@@ -8,13 +8,12 @@ Esta aplicación está diseñada para ayudar a los jueces de atletismo a gestion
 
 - **Tailwind CSS**: Framework de diseño para una interfaz de usuario elegante.
 - **Jest**: Framework de pruebas unitarias.
-- **TypeScript**: Lenguaje de programación tipado.
 - **React Native**: Plataforma para desarrollar aplicaciones móviles.
 - **Node.js**: Entorno de tiempo de ejecución de JavaScript.
 - **Mongoose**: Biblioteca de modelado de objetos para MongoDB.
 - **Redux Toolkit**: Biblioteca para la gestión del estado de la aplicación.
 - **Express**: Framework de aplicaciones web para Node.js.
-- **Bcrypt**: Biblioteca para encriptar contrasenias.
+- **Bcrypt**: Biblioteca para encriptar contraseñas.
 
 
 
@@ -73,15 +72,5 @@ En resumen, esta aplicación está diseñada para simplificar y mejorar la gesti
 
 
 
-COMPETENCIAS DE ATLETISMO (COMPETENCIA 1)
-SALTO - JABALINA 
-RESULTADO 
-MEDIDA - DISTANCIA - Y OTRO - ALTURA 
 
-
-
-
-COMPETENCIAS DE ATLETISMO (COMPETENCIA 2)
-SALTO 
-RESULTADO 
-MEDIDA - DISTANCIA - Y OTRO - OTRO 2 - 
+ 
