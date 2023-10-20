@@ -1,12 +1,18 @@
 
 import express from 'express';
+import conectarDB from './config/db.js';
+import dotenv from 'dotenv';
 
 const app = express();
-const port = 4000;
+
+const PORT = process.env.PORT || 4000;
+dotenv.config();
+//NOTE - Conexión a la base de datos 
+conectarDB();
 
 //NOTE - Creación del servidor.
-app.listen(port, () => {
-  console.log(`Server running on ${port}. Que la fuerza te acompañe. Bro!`);
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}. Que la fuerza te acompañe. Bro!`);
 });
 
 //REVIEW - Ruta especifica
@@ -19,3 +25,4 @@ app.get('/', (req, res) => {
 app.use('/', (req, res) => {
     res.send('Hello World!');
   });
+
