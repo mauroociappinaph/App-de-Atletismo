@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 //NOTE - Middlewares
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 //NOTE - Configuración de Dotenv
 dotenv.config();

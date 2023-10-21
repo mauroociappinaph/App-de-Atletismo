@@ -20,49 +20,53 @@ export const createRegistro = async (req, res) => {
     competicion,
     fecha,
     alturaListon,
-    numeroIntentos,
     resultado,
     observaciones,
   } = req.body;
 
   try {
+    const registrosAtleta = await Registro.find({ atleta, competicion });
+    const lastRegistro = registrosAtleta[registrosAtleta.length - 1];
+
     let savedRegistro;
 
-    if (numeroIntentos >= 3) {
-      //ANCHOR -   Si se alcanzan los 3 intentos, se considera un salto nulo
+    if (!lastRegistro || resultado) {
+      // Si es el primer registro del atleta o si el resultado es true (éxito), avanzar automáticamente.
       savedRegistro = await Registro.create({
         atleta,
         competicion,
         fecha,
-        alturaListon,
-        numeroIntentos: 3, // ANCHOR Fijar el número de intentos en 3
-        resultado: false, // ANCHOR Establecer el resultado en falso (nulo)
-        observaciones,
-      });
-    } else if (resultado === true) {
-      // ANCHOR Si se supera la altura en el primer o segundo intento, avanzar automáticamente
-      savedRegistro = await Registro.create({
-        atleta,
-        competicion,
-        fecha,
-        alturaListon,
-        numeroIntentos: numeroIntentos, // ANCHOR Mantener el número de intentos actual
-        resultado: true, //ANCHOR  Establecer el resultado en verdadero (éxito)
-        //REVIEW - Si esta en los modelos.
-        observaciones,
-      });
-    } else {
-      // ANCHOR Si no se supera la altura y no se han agotado los intentos, guardar el registro
-      savedRegistro = await Registro.create({
-        atleta,
-        competicion,
-        fecha,
-        alturaListon,
-        numeroIntentos,
+        alturasSuperadas: lastRegistro
+          ? [...lastRegistro.alturasSuperadas, alturaListon]
+          : [alturaListon],
+        numeroIntentos: 3, // Reiniciar el número de intentos a 3.
         resultado,
         observaciones,
       });
-      // FIXME - No puede tener tres intenteos seguidos fallidos en la misma altura. Si los consigue queda eliminado
+    } else {
+      // Verificar si ha alcanzado los 3 intentos fallidos en la misma altura.
+      if (lastRegistro.numeroIntentos === 1) {
+        // Si ya ha agotado los 3 intentos en la misma altura, queda fuera de la competencia.
+        savedRegistro = await Registro.create({
+          atleta,
+          competicion,
+          fecha,
+          alturasSuperadas: lastRegistro.alturasSuperadas,
+          numeroIntentos: 0, // 0 intentos restantes.
+          resultado: false, // Salto nulo.
+          observaciones,
+        });
+      } else {
+        savedRegistro = await Registro.create({
+          atleta,
+          competicion,
+          fecha,
+          alturasSuperadas: lastRegistro.alturasSuperadas,
+          numeroIntentos: lastRegistro.numeroIntentos - 1, // Reducir el número de intentos.
+          resultado,
+          observaciones,
+        });
+      }
     }
 
     res.json(savedRegistro);
@@ -72,6 +76,7 @@ export const createRegistro = async (req, res) => {
       .json({ message: "Error creating the registro", error: error.message });
   }
 };
+
 
 // NOTE - Controlador para obtener un registro por su ID
 
