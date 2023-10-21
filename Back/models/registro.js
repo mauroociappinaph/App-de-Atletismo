@@ -26,6 +26,10 @@ const registroSchema = new mongoose.Schema({
     required: true , 
     
     },
+    alturasSuperadas: {
+      type: [Number], // Un array para almacenar las alturas superadas
+      default: [],
+    },
   numeroIntentos: {
     type: Number,
     required: true,
