@@ -30,7 +30,7 @@ const registroSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: null,
-    required: true , 
+    max: 3,
     },
     resultado :{
       type: Boolean,
