@@ -5,6 +5,7 @@ import cors from "cors";
 import atletasRoutes from "./routes/atletasRoutes.js";
 import registrosRoutes from "./routes/registrosRoutes.js";
 import competicionRoutes from "./routes/competicionesRoutes.js";
+import tablaGeneralRoutes from "./routes/tablaGeneralRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -24,20 +25,14 @@ app.listen(PORT, () => {
   console.log(`Server running on ${PORT}. Que la fuerza te acompañe. Bro!`);
 });
 
-//REVIEW - Ruta especifica
-//app.get("/", (req, res) => {
-// res.send("Hello World!");
-//});
 
-//REVIEW - Ruta general
-//app.use("/", (req, res) => {
-//  res.send("Hello World!");
-//});
 
 //SECTION - Rutas
-//NOTE - Ruta de atleta
+//LINK - Ruta de atleta
 app.use("/atletas", atletasRoutes);
-//NOTE - Ruta de registro
+//LINK -Ruta de registro
 app.use("/registros", registrosRoutes);
-//NOTE - Ruta de competición
+//LINK - Ruta de competición
 app.use("/competiciones", competicionRoutes);
+//LINK - Tabla General
+app.use("/tablageneral", tablaGeneralRoutes);
