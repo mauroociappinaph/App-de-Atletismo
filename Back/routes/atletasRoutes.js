@@ -1,5 +1,5 @@
 import express from "express";
-
+const router = express.Router();
 import {
   getAtletas,
   createAtleta,
@@ -8,23 +8,16 @@ import {
   deleteAtleta,
 } from "../controllers/atletasController.js";
 
-const router = express.Router();
-
 //SECTION -  Rutas para Atletas
 
-//NOTE - Ruta para obtener todos los atletas
-router.get("/atletas", getAtletas);
+//NOTE - Ruta para obtener todos los atletas y crear un atleta
+router.route("/atletas").post(createAtleta).get(getAtletas);
 
-//NOTE - Ruta para crear un nuevo atleta
-router.post("/atletas", createAtleta);
-
-//NOTE - Obtener un atleta por su ID
-router.get("/atleta/:id", getAtletaById);
-
-// NOTE - Actualizar un atleta por su ID
-router.put("/atleta/:id", updateAtleta);
-
-// NOTE - Eliminar un atleta por su ID
-router.delete("/atleta/:id", deleteAtleta);
+//NOTE - Obtener , actualizar y eliminar un atleta por su ID
+router
+  .route("/atleta/:id")
+  .get(getAtletaById)
+  .put(updateAtleta)
+  .delete(deleteAtleta);
 
 export default router;

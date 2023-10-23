@@ -1,3 +1,6 @@
+import Competicion from "../models/competicion.js";
+
+
 
 // NOTE  Controlador para obtener todas las competiciones
 export const getCompeticiones = async (req, res) => {
@@ -12,6 +15,22 @@ export const getCompeticiones = async (req, res) => {
 // NOTE Controlador para crear una nueva competición
 export const createCompeticion = async (req, res) => {
   const { nombre, categoria, disciplinas, fechaInicio, fechaFin, lugar, descripcion } = req.body;
+
+  // Realizar una búsqueda para verificar si ya existe una competición con las mismas características
+  const existingCompeticion = await Competicion.findOne({
+    nombre,
+    categoria,
+    disciplinas,
+    fechaInicio,
+    fechaFin,
+    lugar,
+    descripcion
+  });
+
+  if (existingCompeticion) {
+    return res.status(400).json({ message: "Una competición con las mismas categoría y disciplinas ya existe" });
+  }
+
   try {
     const nuevaCompeticion = await Competicion.create({
       nombre,
@@ -24,9 +43,10 @@ export const createCompeticion = async (req, res) => {
     });
     res.json(nuevaCompeticion);
   } catch (error) {
-    res.status(400).json({ message: "Error al crear la competición", error: error.message });
+    res.status(400).json({ message: "Error creating the competition", error: error.message });
   }
 };
+
 
 // NOTE Controlador para obtener una competición por su ID
 export const getCompeticionById = async (req, res) => {
