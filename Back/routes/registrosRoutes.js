@@ -13,11 +13,8 @@ const router = express.Router();
 
 //SECTION -  Rutas para Registros
 
-//LINK - Ruta para obtener todos los registros
-router.get("/registros", getRegistros);
-
-//LINK - Ruta para crear un nuevo registro
-router.post("/registros", createRegistro);
+//LINK - Ruta para obtener todos los registros y crear un nuevo registro.
+router.route("/registros").get(getRegistros).post(createRegistro);
 
 //LINK - Obtener un registro por su ID
 router.get("/registros/:id", getRegistroById);

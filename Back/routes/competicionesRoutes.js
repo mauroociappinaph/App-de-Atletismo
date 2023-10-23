@@ -13,11 +13,9 @@ const router = express.Router();
 
 //SECTION -  Rutas para Competiciones
 
-//NOTE - Ruta para obtener todas las competiciones
-router.get("/competiciones", getCompeticiones);
+//NOTE - Ruta para obtener todas las competiciones y para crear una nueva competición
+router.route("/competiciones").get(getCompeticiones).post(createCompeticion);
 
-//NOTE - Ruta para crear una nueva competición
-router.post("/competiciones", createCompeticion);
 
 //NOTE - Obtener una competicion por su ID
 router.get("/competiciones/:id", getCompeticionById);
