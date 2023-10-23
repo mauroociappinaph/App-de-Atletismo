@@ -11,14 +11,21 @@ export const getAtletas = async (req, res) => {
 };
 
 
-// NOTE - Controlador para crear un nuevo atleta
+// NOTE - Controller to create a new athlete
 export const createAtleta = async (req, res) => {
   const { nombre, nacimiento } = req.body;
+
+  // ANCHOR - Prevent duplicate athlete by name
+  const existingAtleta = await Atleta.findOne({ nombre: { $regex: new RegExp("^" + nombre + "$", "i") }});
+  if (existingAtleta) {
+    return res.status(400).json({ message: "El atleta ya existe" });
+  }
+
   try {
     const savedAtleta = await Atleta.create({ nombre, nacimiento });
     res.json(savedAtleta);
   } catch (error) {
-    res.status(400).json({ message: "Error creating the athlete", error });
+    res.status(400).json({ message: "Error al crear el atleta", error });
   }
 };
 

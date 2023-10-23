@@ -8,11 +8,12 @@ import competicionRoutes from "./routes/competicionesRoutes.js";
 import tablaGeneralRoutes from "./routes/tablaGeneralRoutes.js";
 
 const app = express();
+app.use(express.json());
 const PORT = process.env.PORT || 4000;
 
 //NOTE - Middlewares
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+
 
 //NOTE - Configuración de Dotenv
 dotenv.config();
@@ -29,10 +30,10 @@ app.listen(PORT, () => {
 
 //SECTION - Rutas
 //LINK - Ruta de atleta
-app.use("/atletas", atletasRoutes);
+app.use("/", atletasRoutes);
 //LINK -Ruta de registro
-app.use("/registros", registrosRoutes);
+app.use("/", registrosRoutes);
 //LINK - Ruta de competición
-app.use("/competiciones", competicionRoutes);
+app.use("/", competicionRoutes);
 //LINK - Tabla General
-app.use("/tablageneral", tablaGeneralRoutes);
+app.use("/", tablaGeneralRoutes);
