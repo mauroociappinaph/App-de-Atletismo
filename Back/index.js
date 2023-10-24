@@ -6,6 +6,7 @@ import atletasRoutes from "./routes/atletasRoutes.js";
 import registrosRoutes from "./routes/registrosRoutes.js";
 import competicionRoutes from "./routes/competicionesRoutes.js";
 import tablaGeneralRoutes from "./routes/tablaGeneralRoutes.js";
+import bodyParser from "body-parser";
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 4000;
 //NOTE - Middlewares
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //NOTE - Configuración de Dotenv
 dotenv.config();

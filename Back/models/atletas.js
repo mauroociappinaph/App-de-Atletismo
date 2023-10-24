@@ -28,8 +28,7 @@ const atletaSchema = new mongoose.Schema({
   
 );
 
-//REVIEW - Agregar
-//Nacionalidad y Sexo 
+
 
 const Atleta = mongoose.model('Atleta', atletaSchema);
 
