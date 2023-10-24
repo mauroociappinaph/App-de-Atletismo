@@ -11,12 +11,25 @@ const atletaSchema = new mongoose.Schema({
      required: true,
      trim: true,
    },
+   nacionalidad: {
+    type: Number, 
+    required: true, 
+    trim: true,
   },
+  sexo: {
+    type: String, 
+    trim: true,
+  },
+  },
+  
    {
      timestamps: true,
    },
   
 );
+
+//REVIEW - Agregar
+//Nacionalidad y Sexo 
 
 const Atleta = mongoose.model('Atleta', atletaSchema);
 
