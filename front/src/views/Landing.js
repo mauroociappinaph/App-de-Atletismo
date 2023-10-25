@@ -1,13 +1,15 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import { View, TouchableOpacity, Text ,  Image} from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import Logo from "../../assets/Athlon.png"
 
 
 export default Landing = ({ navigation }) => {
   return (
     <View className="bg-blue-500 h-full flex items-center justify-center">
-      <FontAwesome5 name="running" size={200} color="white" />
       <Text className="text-white text-4xl mt-4">Atletismo</Text>
+      <FontAwesome5 name="running" size={200} color="white" />
+      <Image source={Logo} className="h-20 w-20" />
       <TouchableOpacity
         onPress={() => navigation.navigate("FormAtleta")}
         className="bg-green-500 p-3 rounded-md mt-4"

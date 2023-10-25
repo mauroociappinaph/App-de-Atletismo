@@ -1,47 +1,70 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native";
-import tw from "tailwind-react-native-classnames";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
 const FormAtleta = () => {
   const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [edad, setEdad] = useState("");
-  const [deporte, setDeporte] = useState("");
+  const [nacimiento, setNacimiento] = useState("");
+  const [nacionalidad, setNacionalidad] = useState("");
+  const [sexo, setSexo] = useState("");
 
   const handleSubmit = () => {
     // Aquí se enviaría el formulario al servidor
   };
 
   return (
-    <View style={tw`mt-10 flex`}>
-    <Text style={tw`text-lg font-bold mb-5`}>Crear atleta</Text>
-    <TextInput
-      style={tw`w-full h-12 px-4 py-2 border border-gray-300 rounded-md mb-5`}
-      placeholder="Nombre"
-      value={nombre}
-      onChangeText={setNombre}
-    />
-    <TextInput
-      style={tw`w-full h-12 px-4 py-2 border border-gray-300 rounded-md mb-5`}
-      placeholder="Apellido"
-      value={apellido}
-      onChangeText={setApellido}
-    />
-    <TextInput
-      style={tw`w-full h-12 px-4 py-2 border border-gray-300 rounded-md mb-5`}
-      placeholder="Edad"
-      value={edad}
-      onChangeText={setEdad}
-    />
-    <TextInput
-      style={tw`w-full h-12 px-4 py-2 border border-gray-300 rounded-md mb-5`}
-      placeholder="Deporte"
-      value={deporte}
-      onChangeText={setDeporte}
-    />
-    <Button title="Crear atleta" onPress={handleSubmit} style={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`} />
-  </View>
-);
+    <View style={styles.container}>
+      <Text style={styles.title}>Crear atleta</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Nombre"
+        value={nombre}
+        onChangeText={setNombre}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Nacimiento"
+        value={nacimiento}
+        onChangeText={setNacimiento}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Nacionalidad"
+        value={nacionalidad}
+        onChangeText={setNacionalidad}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Sexo"
+        value={sexo}
+        onChangeText={setSexo}
+      />
+      <Button title="Crear atleta" onPress={handleSubmit} color="#007AFF" />
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#e5e5e5",
+    padding: 16,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  input: {
+    width: "100%",
+    height: 40,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginBottom: 16,
+  },
+});
 
 export default FormAtleta;
