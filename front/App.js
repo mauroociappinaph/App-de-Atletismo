@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Landing from "./src/views/Landing";
@@ -16,4 +15,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
