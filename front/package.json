@@ -23,7 +23,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.6",
-    "react-native-DateTimePicker": "^1.7.2",
+    "react-native-datepicker": "^1.7.2",
     "react-native-tailwindcss": "^1.1.11",
     "react-native-web": "~0.19.6",
     "react-redux": "^8.1.3",
