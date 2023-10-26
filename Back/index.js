@@ -29,7 +29,10 @@ app.listen(PORT, () => {
   console.log(`Server running on ${PORT}. Que la fuerza te acompañe. Bro!`);
 });
 
-
+//NOTE - Server deploy
+server.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server listening at port ${PORT}`); 
+  });
 
 //SECTION - Rutas
 //LINK - Ruta de atleta
