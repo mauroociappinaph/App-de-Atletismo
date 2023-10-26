@@ -7,5 +7,11 @@ const initialState = {
 export default athletaSlice = createSlice({
   name: "athletas",
   initialState,
-  reducers: {},
+  reducers: {
+    setAtletas: (state, action) => {
+      state.atletas = action.payload;
+    },
+  },
 });
+
+export const { setAtletas } = atletasSlice.actions;
