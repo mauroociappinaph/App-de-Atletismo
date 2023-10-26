@@ -1,14 +1,35 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { useDispatch } from "react-redux"; // Importa useDispatch
+import { axiosCrearAtleta } from "../redux/Slices/athletaSlice";
 
 const FormAtleta = () => {
+  const dispatch = useDispatch(); // Obtiene la función dispatch
   const [nombre, setNombre] = useState("");
   const [nacimiento, setNacimiento] = useState("");
   const [nacionalidad, setNacionalidad] = useState("");
   const [sexo, setSexo] = useState("");
 
   const handleSubmit = () => {
-    // Aquí se enviaría el formulario al servidor
+    // Crea un objeto con los datos del nuevo atleta
+    const nuevoAtleta = {
+      nombre,
+      nacimiento,
+      nacionalidad,
+      sexo,
+    };
+
+    // Envia una acción para crear el nuevo atleta
+    dispatch(axiosCrearAtleta(nuevoAtleta))
+      .unwrap() // Trata de desempaquetar el resultado
+      .then((response) => {
+        // Acciones después de crear el atleta
+        console.log("Atleta creado:", response);
+      })
+      .catch((error) => {
+        // Maneja errores en caso de que la creación falle
+        console.error("Error al crear el atleta:", error);
+      });
   };
 
   return (

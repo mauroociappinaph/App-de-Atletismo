@@ -1,21 +1,21 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Landing from "./src/views/Landing";
+import FormAtleta from "./src/views/FormAtleta";
+import store from "./src/redux/store";
+import { Provider } from "react-redux";
 
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { Provider } from 'react-redux';
-import Landing from './Landing';
-import FormAtleta from './FormAtleta';
-import store from './store';
-
-const StackNavigator = createStackNavigator();
-const AppContainer = createAppContainer(StackNavigator);
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <Provider store={store}>
-      <AppContainer>
-        <StackNavigator.Screen name="Landing" component={Landing} />
-        <StackNavigator.Screen name="FormAtleta" component={FormAtleta} />
-      </AppContainer>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Landing">
+          <Stack.Screen name="Landing" component={Landing} />
+          <Stack.Screen name="FormAtleta" component={FormAtleta} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }
