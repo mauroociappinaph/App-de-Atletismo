@@ -1,0 +1,20 @@
+/* Actions athletes */
+export const GET_ATLETAS = "GET_ATHLETAS";
+export const GET_ATLETA_BY_ID = "GET_ATHLETA_BY_ID";
+export const DELETE_ATLETA = "DELETE_ATHLETA";
+export const UPDATE_ATLETA = "UPDATE_ATLETA";
+export const CREATE_ATLETA = "CREATE_ATLETA";
+
+/* Actions competicion */
+export const GET_COMPETICIONES = "GET_COMPETICIONES";
+export const GET_COMPETICION_BY_ID = "GET_COMPETICION_BY_ID";
+export const DELETE_COMPETICION = "DELETE_COMPETICION";
+export const UPDATE_COMPETICION = "UPDATE_COMPETICION";
+export const CREATE_COMPETICION = "CREATE_COMPETICION";
+
+/* Action registro */
+export const GET_REGISTROS = "GET_REGISTROS";
+export const GET_REGISTRO_BY_ID = "GET_REGISTRO_BY_ID";
+export const DELETE_CREGISTRO = "DELETE_REGISTRO";
+export const UPDATE_REGISTRO = "UPDATE_REGISTRO";
+export const CREATE_REGISTRO = "CREATE_REGISTRO";

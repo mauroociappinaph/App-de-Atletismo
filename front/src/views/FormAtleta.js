@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-import { useDispatch } from "react-redux"; // Importa useDispatch
-import { axiosCrearAtleta } from "../redux/Slices/athletaSlice";
+/* import { useDispatch } from "react-redux"; // Importa useDispatch
+import { axiosCrearAtleta } from "../redux/Slices/athletaSlice"; */
 
 const FormAtleta = () => {
-  const dispatch = useDispatch(); // Obtiene la función dispatch
+  /*  const dispatch = useDispatch(); // Obtiene la función dispatch
   const [nombre, setNombre] = useState("");
   const [nacimiento, setNacimiento] = useState("");
   const [nacionalidad, setNacionalidad] = useState("");
@@ -30,12 +30,12 @@ const FormAtleta = () => {
         // Maneja errores en caso de que la creación falle
         console.error("Error al crear el atleta:", error);
       });
-  };
+  }; */
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Crear atleta</Text>
-      <TextInput
+      {/*  <TextInput
         style={styles.input}
         placeholder="Nombre"
         value={nombre}
@@ -59,7 +59,7 @@ const FormAtleta = () => {
         value={sexo}
         onChangeText={setSexo}
       />
-      <Button title="Crear atleta" onPress={handleSubmit} color="#007AFF" />
+      <Button title="Crear atleta" onPress={handleSubmit} color="#007AFF" /> */}
     </View>
   );
 };
