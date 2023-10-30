@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
-import { axiosCrearAtleta } from "../redux/Slices/athletaSlice";
-import { useNavigation } from "@react-navigation/native";
+import { createAtleta } from "../redux/actions.JS"; // Importa la acción para crear un atleta
 
-const FormAtleta = () => {
+const CrearAtleta = ({ navigation }) => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const [nombre, setNombre] = useState("");
   const [nacimiento, setNacimiento] = useState("");
   const [nacionalidad, setNacionalidad] = useState("");
   const [sexo, setSexo] = useState("");
 
-const handleSubmit = async () => {
-  try {
+  const handleCreateAtleta = () => {
     const nuevoAtleta = {
       nombre,
       nacimiento,
@@ -21,28 +18,16 @@ const handleSubmit = async () => {
       sexo,
     };
 
-    const response = await dispatch(axiosCrearAtleta(nuevoAtleta)).unwrap();
+    // Llama a la acción para crear un nuevo atleta
+    dispatch(createAtleta(nuevoAtleta));
 
-    Alert.alert(
-      "Éxito",
-      "Atleta creado correctamente",
-      [
-        {
-          text: "Aceptar",
-          onPress: () => {
-            navigation.navigate("AllAtletas");
-          },
-        },
-      ]
-    );
-  } catch (error) {
-    console.error("Error al crear el atleta:", error);
-  }
-};
+    // Luego de crear el atleta, puedes navegar a la lista de atletas
+    navigation.navigate("AllAtletas");
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Crear atleta</Text>
+      <Text style={styles.title}>Crear Atleta</Text>
       <TextInput
         style={styles.input}
         placeholder="Nombre"
@@ -67,7 +52,11 @@ const handleSubmit = async () => {
         value={sexo}
         onChangeText={setSexo}
       />
-      <Button title="Crear atleta" onPress={handleSubmit} color="#007AFF" />
+      <Button
+        title="Crear Atleta"
+        onPress={handleCreateAtleta}
+        color="#007AFF"
+      />
     </View>
   );
 };
@@ -96,4 +85,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FormAtleta;
+export default CrearAtleta;

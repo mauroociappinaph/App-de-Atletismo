@@ -15,7 +15,18 @@ export default Landing = ({ navigation }) => {
         className="bg-green-500 p-3 rounded-md mt-4"
       >
         <Text className="text-white">Crear atleta</Text>
-        <Text className="text-white">Crear competición</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("AllAtletas")}
+        className="bg-green-500 p-3 rounded-md mt-4"
+      >
+        <Text className="text-white">Ver atletas</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Competición")}
+        className="bg-green-500 p-3 rounded-md mt-4"
+      >
+        <Text className="text-white">Competición</Text>
       </TouchableOpacity>
     </View>
   );
