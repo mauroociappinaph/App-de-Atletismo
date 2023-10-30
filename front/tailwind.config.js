@@ -2,8 +2,12 @@
 
 module.exports = {
   content: ["./App.{js,jsx,ts,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
-    theme: {
-      extend: {},
+  theme: {
+    extend: {
+      colors: {
+        botones: "#8E94F2",
+      },
     },
-    plugins: [],
-  }
+  },
+  plugins: [],
+};
