@@ -1,20 +1,23 @@
 import React from "react";
-import { View, TouchableOpacity, Text ,  Image} from "react-native";
+import { View, TouchableOpacity, Text, Image } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import Logo from "../../assets/Athlon.png"
-
+import Logo from "../../assets/Athlon.png";
 
 export default Landing = ({ navigation }) => {
   return (
     <View className="bg-blue-500 h-full flex items-center justify-center">
-      <Text className="text-white text-4xl mt-4">Atletismo</Text>
-      <FontAwesome5 name="running" size={200} color="white" />
-      <Image source={Logo} className="h-20 w-20" />
+      <Image source={Logo} className="h-50 w-50" />
       <TouchableOpacity
         onPress={() => navigation.navigate("FormAtleta")}
-        className="bg-green-500 p-3 rounded-md mt-4"
+        className="bg-botones p-3 rounded-md mt-4"
       >
         <Text className="text-white">Crear atleta</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("FormCompeticion")}
+        className=" bg-botones p-3 rounded-md mt-4"
+      >
+        <Text className="text-white">Crear competición</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("AllAtletas")}
@@ -26,7 +29,7 @@ export default Landing = ({ navigation }) => {
         onPress={() => navigation.navigate("Competición")}
         className="bg-green-500 p-3 rounded-md mt-4"
       >
-        <Text className="text-white">Competición</Text>
+        <Text className="text-white">Ver Competición</Text>
       </TouchableOpacity>
     </View>
   );
@@ -48,9 +51,4 @@ const styles = StyleSheet.create({
   },
 }); */
 
-//STUB - Botón de login
-
-  /*<TouchableOpacity style={styles.button}>
-        <Text>Login</Text>
-    </TouchableOpacity> */
 
