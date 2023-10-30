@@ -34,21 +34,3 @@ export default Landing = ({ navigation }) => {
     </View>
   );
 };
-/*
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#8E94F2",
-  },
-  text: { color: "#ffff", fontSize: 90 },
-  button: {
-    backgroundColor: "#fff3",
-    padding: 10,
-    borderRadius: 5,
-    margin: 20,
-  },
-}); */
-
-

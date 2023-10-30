@@ -7,4 +7,4 @@ export default function FormCompeticion() {
       <Text>Crear competición</Text>
     </View>
   );
-}
+
