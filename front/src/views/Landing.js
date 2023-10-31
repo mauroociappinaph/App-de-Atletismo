@@ -1,36 +1,40 @@
 import React from "react";
-import { View, TouchableOpacity, Text, Image } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
-import Logo from "../../assets/Athlon.png";
+import { View, Image } from "react-native";
+import Boton from "../components/Boton";
+import Logo from "../../assets/AthlonSinFondo.png";
 
-export default Landing = ({ navigation }) => {
+const Landing = ({ navigation }) => {
   return (
-    <View className="bg-blue-500 h-full flex items-center justify-center">
-      <Image source={Logo} className="h-50 w-50" />
-      <TouchableOpacity
+    <View
+      style={{
+        backgroundColor: "#ffff",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
+      <Image source={Logo} style={{ height: 450, width: 450 }} />
+      <Boton
         onPress={() => navigation.navigate("FormAtleta")}
-        className="bg-botones p-3 rounded-md mt-4"
-      >
-        <Text className="text-white">Crear atleta</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+        titulo="Crear atleta"
+        color="#2980b9"
+      />
+      <Boton
         onPress={() => navigation.navigate("FormCompeticion")}
-        className=" bg-botones p-3 rounded-md mt-4"
-      >
-        <Text className="text-white">Crear competición</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+        titulo="Crear competición"
+        color="#2980b9"
+      />
+      <Boton
         onPress={() => navigation.navigate("AllAtletas")}
-        className="bg-green-500 p-3 rounded-md mt-4" 
-      >
-        <Text className="text-white">Ver atletas</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Competición")}
-        className="bg-green-500 p-3 rounded-md mt-4"
-      >
-        <Text className="text-white">Ver Competición</Text>
-      </TouchableOpacity>
+        titulo="Ver atletas"
+        color="#27ae60"
+      />
+      <Boton
+        onPress={() => navigation.navigate("AllCompeticiones")}
+        titulo="Ver Competición"
+        color="#27ae60"
+      />
     </View>
   );
 };
+
+export default Landing;
