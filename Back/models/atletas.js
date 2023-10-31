@@ -12,7 +12,7 @@ const atletaSchema = new mongoose.Schema({
      trim: true,
    },
    nacionalidad: {
-    type: Number, 
+    type: String, 
     required: true, 
     trim: true,
   },
