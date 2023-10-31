@@ -21,7 +21,7 @@ export default Landing = ({ navigation }) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("AllAtletas")}
-        className="bg-green-500 p-3 rounded-md mt-4"
+        className="bg-green-500 p-3 rounded-md mt-4" 
       >
         <Text className="text-white">Ver atletas</Text>
       </TouchableOpacity>

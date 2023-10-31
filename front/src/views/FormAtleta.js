@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
-import { axiosCrearAtleta } from "../redux/Slices/athletaSlice";
+
 import { useNavigation } from "@react-navigation/native";
 
 const FormAtleta = () => {

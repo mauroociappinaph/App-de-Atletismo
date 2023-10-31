@@ -5,6 +5,7 @@ import FormAtleta from "./src/views/FormAtleta";
 import FormCompeticion from "./src/views/FormCompeticion";
 import store from "./src/redux/store";
 import { Provider } from "react-redux";
+import AllAtletas from "./src/views/AllAtletas";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
           <Stack.Screen name="Landing" component={Landing} />
           <Stack.Screen name="FormAtleta" component={FormAtleta} />
           <Stack.Screen name="FormCompeticion" component={FormCompeticion} />
+          <Stack.Screen name="AllAtletas" component={AllAtletas} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
