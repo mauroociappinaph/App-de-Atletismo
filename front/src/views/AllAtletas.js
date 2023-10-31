@@ -24,12 +24,19 @@ const atletas = [
     nacionalidad: "Fondo Bikini",
     sexo: "Esponja",
   },
+  {
+    id: 4,
+    nombre: "Calamardo",
+    nacimiento: "04/06/2001",
+    nacionalidad: "Fondo Bikini",
+    sexo: "Calamar",
+  }
 ];
 
 const AllAtletas = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>All Atletas</Text>
+      <Text style={styles.title}>Atletas</Text>
       <FlatList
         data={atletas}
         renderItem={({ item }) => <CardAtleta item={item} />}
