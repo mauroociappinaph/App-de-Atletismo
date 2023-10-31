@@ -13,11 +13,7 @@ const Landing = ({ navigation }) => {
         justifyContent: "center",
       }}>
       <Image source={Logo} style={{ height: 450, width: 450 }} />
-      <Boton
-        onPress={() => navigation.navigate("FormAtleta")}
-        titulo="Crear atleta"
-        color="#2980b9"
-      />
+
       <Boton
         onPress={() => navigation.navigate("FormCompeticion")}
         titulo="Crear competición"
