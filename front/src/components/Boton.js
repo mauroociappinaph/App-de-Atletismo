@@ -10,6 +10,7 @@ const Boton = ({ onPress, titulo, color }) => {
         padding: 10,
         borderRadius: 5,
         marginTop: 10,
+        marginBottom: 20,
       }}>
       <Text style={{ color: "white", textAlign: "center" }}>{titulo}</Text>
     </TouchableOpacity>

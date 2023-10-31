@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import CardAtleta from "../components/Atletas/CardAtleta";
-
+import Boton from "../components/Boton";
 const atletas = [
   {
     id: 1,
@@ -30,7 +30,28 @@ const atletas = [
     nacimiento: "04/06/2001",
     nacionalidad: "Fondo Bikini",
     sexo: "Calamar",
-  }
+  },
+  {
+    id: 5,
+    nombre: "Gary",
+    nacimiento: "02/06/2001",
+    nacionalidad: "Fondo Bikini",
+    sexo: "Caracol",
+  },
+  {
+    id: 6,
+    nombre: "Plankton",
+    nacimiento: "01/06/2001",
+    nacionalidad: "Fondo Bikini",
+    sexo: "Copépodo",
+  },
+  {
+    id: 7,
+    nombre: "Don Cangrejo",
+    nacimiento: "05/05/2001",
+    nacionalidad: "Fondo Bikini",
+    sexo: "Cangrejo",
+  },
 ];
 
 const AllAtletas = () => {
@@ -41,6 +62,11 @@ const AllAtletas = () => {
         data={atletas}
         renderItem={({ item }) => <CardAtleta item={item} />}
         keyExtractor={(item) => item.id.toString()}
+      />
+      <Boton
+        onPress={() => navigation.navigate("FormAtleta")}
+        titulo="Crear atleta"
+        color="#8E94F2"
       />
     </View>
   );
