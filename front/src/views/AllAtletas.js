@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import CardAtleta from "../components/Atletas/CardAtleta";
 import Boton from "../components/Boton";
-const atletas = [
+import { useDispatch, useSelector } from "react-redux";
+import { getAtletas } from "../redux/actions.JS";
+/* const atletas = [
   {
     id: 1,
     nombre: "Patricio",
@@ -52,9 +54,17 @@ const atletas = [
     nacionalidad: "Fondo Bikini",
     sexo: "Cangrejo",
   },
-];
+]; */
 
 const AllAtletas = () => {
+  const atletas = useSelector((state) => state.AllAtletas);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAtletas());
+  }, [dispatch]);
+
+  console.log(atletas);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Atletas</Text>

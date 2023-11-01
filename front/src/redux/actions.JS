@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   GET_ATLETAS,
   GET_ATLETA_BY_ID,
@@ -5,7 +6,6 @@ import {
   UPDATE_ATLETA,
   CREATE_ATLETA,
 } from "./action-types";
-
 //!SECTION - Atletas
 
 export const getAtletas = () => {
@@ -15,7 +15,7 @@ export const getAtletas = () => {
 
       dispatch({ type: GET_ATLETAS, payload: atletas.data });
     } catch (error) {
-      console.log("Error:", error);
+      console.log("Error:", error.data);
     }
   };
 };
@@ -24,11 +24,11 @@ export const getAtletaById = (id) => {
   return async function (dispatch) {
     try {
       const atleta = await axios.get(`http://localhost:4000/atletas/${id}`);
-      dispatch ({ type: GET_ATLETA_BY_ID, payload: atleta.data });
+      dispatch({ type: GET_ATLETA_BY_ID, payload: atleta.data });
     } catch (error) {
       console.log("Error:", error);
     }
-}
+  };
 };
 
 export const deleteAtleta = (id) => {
@@ -40,7 +40,7 @@ export const deleteAtleta = (id) => {
       console.log("Error:", error);
     }
   };
-}
+};
 
 export const updateAtleta = (atleta) => {
   return async function (dispatch) {
@@ -54,7 +54,7 @@ export const updateAtleta = (atleta) => {
       console.log("Error:", error);
     }
   };
-}
+};
 
 export const createAtleta = (atleta) => {
   return async function (dispatch) {
@@ -68,11 +68,8 @@ export const createAtleta = (atleta) => {
       console.log("Error:", error);
     }
   };
-}
-
-
+};
 
 console.log("hla");
-console.log(getAtletas());
 
 //!SECTION - Competiciones
