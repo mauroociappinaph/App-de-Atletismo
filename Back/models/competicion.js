@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const competicionSchema = new mongoose.Schema(
   {
@@ -44,8 +44,8 @@ const competicionSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 const Competicion = mongoose.model("Competicion", competicionSchema);
 
-export default Competicion;
+module.exports = Competicion;

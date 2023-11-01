@@ -1,7 +1,7 @@
-import Registro from "../models/registro.js";
+const Registro = require("../models/registro.js")
 
 // NOTE - Controlador para obtener todos los registros
-export const getRegistros = async (req, res) => {
+const getRegistros = async (req, res) => {
   try {
     const registros = await Registro.find();
     res.json(registros);
@@ -14,7 +14,7 @@ export const getRegistros = async (req, res) => {
 };
 
 // NOTE - Controlador para crear un nuevo registro
-export const createRegistro = async (req, res) => {
+const createRegistro = async (req, res) => {
   const {
     atleta,
     competicion,
@@ -80,7 +80,7 @@ export const createRegistro = async (req, res) => {
 
 // NOTE - Controlador para obtener un registro por su ID
 
-export const getRegistroById = async (req, res) => {
+const getRegistroById = async (req, res) => {
   try {
     const registro = await Registro.findById(req.params.id);
     if (!registro) {
@@ -93,7 +93,7 @@ export const getRegistroById = async (req, res) => {
 };
 
 //NOTE - Actualizar un registro por su ID
-export const updateRegistro = async (req, res) => {
+const updateRegistro = async (req, res) => {
   const { id } = req.params; //
   const updateData = req.body;
   try {
@@ -118,7 +118,7 @@ export const updateRegistro = async (req, res) => {
 
 //NOTE - Eliminar un registro por su ID
 
-export const deleteRegistro = async (req, res) => {
+const deleteRegistro = async (req, res) => {
   try {
     const registro = await Registro.findByIdAndRemove(req.params.id);
     if (!registro) {
@@ -129,3 +129,11 @@ export const deleteRegistro = async (req, res) => {
     res.status(500).json({ message: "Error al eliminar el registro" });
   }
 };
+
+module.exports = {
+  getRegistros,
+  createRegistro,
+  getRegistroById,
+  updateRegistro,
+  deleteRegistro,
+}

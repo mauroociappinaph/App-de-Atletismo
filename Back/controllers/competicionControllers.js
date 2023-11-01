@@ -1,9 +1,7 @@
-import Competicion from "../models/competicion.js";
-
-
+const Competicion = require("../models/competicion.js")
 
 // NOTE  Controlador para obtener todas las competiciones
-export const getCompeticiones = async (req, res) => {
+const getCompeticiones = async (req, res) => {
   try {
     const competiciones = await Competicion.find();
     res.json(competiciones);
@@ -13,7 +11,7 @@ export const getCompeticiones = async (req, res) => {
 };
 
 // NOTE Controlador para crear una nueva competición
-export const createCompeticion = async (req, res) => {
+const createCompeticion = async (req, res) => {
   const { nombre, categoria, disciplinas, fechaInicio, fechaFin, lugar, descripcion } = req.body;
 
   // Realizar una búsqueda para verificar si ya existe una competición con las mismas características
@@ -49,7 +47,7 @@ export const createCompeticion = async (req, res) => {
 
 
 // NOTE Controlador para obtener una competición por su ID
-export const getCompeticionById = async (req, res) => {
+const getCompeticionById = async (req, res) => {
   try {
     const competicion = await Competicion.findById(req.params.id);
     if (!competicion) {
@@ -62,7 +60,7 @@ export const getCompeticionById = async (req, res) => {
 };
 
 // NOTE Controlador para actualizar una competición por su ID
-export const updateCompeticion = async (req, res) => {
+const updateCompeticion = async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
   try {
@@ -77,7 +75,7 @@ export const updateCompeticion = async (req, res) => {
 };
 
 // NOTE Controlador para eliminar una competición por su ID
-export const deleteCompeticion = async (req, res) => {
+const deleteCompeticion = async (req, res) => {
   try {
     const competicion = await Competicion.findByIdAndRemove(req.params.id);
     if (!competicion) {
@@ -89,3 +87,10 @@ export const deleteCompeticion = async (req, res) => {
   }
 };
 
+module.exports = {
+  getCompeticiones,
+  createCompeticion,
+  getCompeticionById,
+  updateCompeticion,
+  deleteCompeticion,
+};

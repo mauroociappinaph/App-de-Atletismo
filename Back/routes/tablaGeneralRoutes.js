@@ -1,11 +1,11 @@
-import express from "express";
+const { Router } = require("express")
 
-import { calcularTablaGeneral } from "../controllers/tablaGeneralController.js";
+const { calcularTablaGeneral } = require("../controllers/tablaGeneralController.js")
 
-const router = express.Router();
+const router = Router();
 
 // SECTION - Ruta CALCULAR TABLA GENERAL
 
 router.get("/:competicionId", calcularTablaGeneral);
 
-export default router;
+module.exports = router;

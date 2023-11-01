@@ -1,21 +1,20 @@
-import express from "express";
-import conectarDB from "./config/db.js";
-import dotenv from "dotenv";
-import cors from "cors";
-import bodyParser from "body-parser";
-import morgan from "morgan";
+require("dotenv").config();
+const express = require("express")
+const conectarDB = require("./config/db.js")
+const cors = require('cors')
+const bodyParser = require("body-parser")
+const morgan = require("morgan")
+const atletasRoutes = require("./routes/atletasRoutes.js")
+const registrosRoutes = require("./routes/registrosRoutes.js")
+const competicionRoutes = require("./routes/competicionesRoutes.js")
+const tablaGeneralRoutes = require("./routes/tablaGeneralRoutes.js")
 
 //SECTION - Importa las rutas
-import atletasRoutes from "./routes/atletasRoutes.js";
-import registrosRoutes from "./routes/registrosRoutes.js";
-import competicionRoutes from "./routes/competicionesRoutes.js";
-import tablaGeneralRoutes from "./routes/tablaGeneralRoutes.js";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3001;
 
 //SECTION - Configuración de Dotenv
-dotenv.config();
 
 //SECTION - Conexión a la base de datos
 conectarDB();
@@ -29,7 +28,7 @@ app.use(bodyParser.json());
 
 //SECTION - Configuración de CORS
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
@@ -42,6 +41,6 @@ app.use("/", competicionRoutes); //NOTE - Ruta de competición
 app.use("/", tablaGeneralRoutes); //NOTE - Ruta de tabla general
 
 //SECTION - Creación del servidor
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on ${PORT}. Que la fuerza te acompañe. Bro!`);
 });

@@ -1,15 +1,13 @@
-import express from "express";
-
-
-import {
+const { Router } = require('express')
+const {
   getCompeticiones,
   createCompeticion,
   getCompeticionById,
   updateCompeticion,
   deleteCompeticion,
-} from "../controllers/competicionControllers.js";
+} = require("../controllers/competicionControllers.js")
 
-const router = express.Router();
+const router = Router();
 
 //SECTION -  Rutas para Competiciones
 
@@ -26,4 +24,4 @@ router.put("/competiciones/:id", updateCompeticion);
 //NOTE - Eliminar una competición por su ID
 router.delete("/competiciones/:id", deleteCompeticion);
 
-export default router;
+module.exports = router;

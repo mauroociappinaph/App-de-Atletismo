@@ -15,22 +15,28 @@ const initialState = {
   allAthletas: [],
 };
 
-
 //!SECTION - Atletas
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ATLETAS:
-      return { ...state, allAthletas: action.payload };
+      return {
+        ...state,
+        allAthletas: action.payload,
+      };
     case GET_ATLETA_BY_ID:
-      return { ...state, allAthletas: action.payload };
+      return {
+        ...state,
+        allAthletas: action.payload,
+      };
     default:
-      return { ...state };
+      return {
+        ...state,
+      };
   }
 };
 
 export default reducer;
-
 
 //!SECTION - Competiciones
 
@@ -63,4 +69,3 @@ export const createCompeticion = (nuevaCompeticion) => ({
   type: CREATE_COMPETICION,
   payload: nuevaCompeticion,
 });
-

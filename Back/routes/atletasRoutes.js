@@ -1,12 +1,12 @@
-import express from "express";
-const router = express.Router();
-import {
+const { Router } = require("express");
+const router = Router();
+const {
   getAtletas,
   createAtleta,
   getAtletaById,
   updateAtleta,
   deleteAtleta,
-} from "../controllers/atletasController.js";
+} = require("../controllers/atletasController.js");
 
 //SECTION -  Rutas para Atletas
 
@@ -20,4 +20,4 @@ router
   .put(updateAtleta)
   .delete(deleteAtleta);
 
-export default router;
+module.exports = router

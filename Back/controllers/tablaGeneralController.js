@@ -1,8 +1,8 @@
-import Registro from "../models/registro.js";
-import Atleta from "../models/atletas.js";
+const Registro = require("../models/registro.js")
+const Atleta = require("../models/atletas.js")
 
 
-export const calcularTablaGeneral = async (req, res) => {
+const calcularTablaGeneral = async (req, res) => {
     try {
       const atletas = await Atleta.find();
       const tablaGeneral = {};
@@ -29,3 +29,6 @@ export const calcularTablaGeneral = async (req, res) => {
       res.status(500).json({ message: "Error al calcular la tabla general" });
     }
   };
+  module.exports = {
+    calcularTablaGeneral
+  }

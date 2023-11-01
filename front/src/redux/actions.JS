@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.baseURL = 'http://localhost:3001'
 import {
   GET_ATLETAS,
   GET_ATLETA_BY_ID,
@@ -11,9 +12,13 @@ import {
 export const getAtletas = () => {
   return async function (dispatch) {
     try {
-      const atletas = await axios.get("http://localhost:4000/atletas");
+      const atletas = await axios.get("/atletas");
+      const jsonAtletas = atletas.data;
 
-      dispatch({ type: GET_ATLETAS, payload: atletas.data });
+      return dispatch({
+        type: GET_ATLETAS,
+        payload: jsonAtletas,
+      })
     } catch (error) {
       console.log("Error:", error.data);
     }
@@ -23,8 +28,12 @@ export const getAtletas = () => {
 export const getAtletaById = (id) => {
   return async function (dispatch) {
     try {
-      const atleta = await axios.get(`http://localhost:4000/atletas/${id}`);
-      dispatch({ type: GET_ATLETA_BY_ID, payload: atleta.data });
+      const atleta = await axios.get(`/atletas/${id}`);
+      const jsonAtleta = atleta.data;
+      return dispatch({
+        type: GET_ATLETA_BY_ID,
+        payload: jsonAtleta
+      });
     } catch (error) {
       console.log("Error:", error);
     }
@@ -34,8 +43,11 @@ export const getAtletaById = (id) => {
 export const deleteAtleta = (id) => {
   return async function (dispatch) {
     try {
-      await axios.delete(`http://localhost:4000/atletas/${id}`);
-      dispatch({ type: DELETE_ATLETA, payload: id });
+      await axios.delete(`/atletas/${id}`);
+      return dispatch({
+        type: DELETE_ATLETA,
+        payload: id
+      });
     } catch (error) {
       console.log("Error:", error);
     }
@@ -45,11 +57,11 @@ export const deleteAtleta = (id) => {
 export const updateAtleta = (atleta) => {
   return async function (dispatch) {
     try {
-      const updatedAtleta = await axios.put(
-        `http://localhost:4000/atletas/${atleta.id}`,
-        atleta
-      );
-      dispatch({ type: UPDATE_ATLETA, payload: updatedAtleta.data });
+      const updatedAtleta = await axios.put(`/atletas/${atleta.id}`, atleta);
+      return dispatch({
+        type: UPDATE_ATLETA,
+        payload: updatedAtleta.data
+      });
     } catch (error) {
       console.log("Error:", error);
     }
@@ -59,17 +71,15 @@ export const updateAtleta = (atleta) => {
 export const createAtleta = (atleta) => {
   return async function (dispatch) {
     try {
-      const createdAtleta = await axios.post(
-        "http://localhost:4000/atletas",
-        atleta
-      );
-      dispatch({ type: CREATE_ATLETA, payload: createdAtleta.data });
+      const createdAtleta = await axios.post("/atletas", atleta);
+      return dispatch({
+        type: CREATE_ATLETA,
+        payload: createdAtleta.data
+      });
     } catch (error) {
       console.log("Error:", error);
     }
   };
 };
-
-console.log("hla");
 
 //!SECTION - Competiciones

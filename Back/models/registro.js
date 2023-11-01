@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const registroSchema = new mongoose.Schema(
   {
@@ -50,4 +50,4 @@ const registroSchema = new mongoose.Schema(
 
 const Registro = mongoose.model("Registro", registroSchema);
 
-export default Registro;
+module.exports = Registro;

@@ -1,7 +1,7 @@
-import Atleta from "../models/atletas.js";
+const Atleta = require("../models/atletas.js")
 
 // NOTE - Controlador para obtener todos los atletas
-export const getAtletas = async (req, res) => {
+const getAtletas = async (req, res) => {
   try {
     const atletas = await Atleta.find();
     res.json(atletas);
@@ -12,7 +12,7 @@ export const getAtletas = async (req, res) => {
 
 
 // NOTE - Controller to create a new athlete
-export const createAtleta = async (req, res) => {
+const createAtleta = async (req, res) => {
   const { nombre, nacimiento } = req.body;
 
   // ANCHOR - Prevent duplicate athlete by name
@@ -30,7 +30,7 @@ export const createAtleta = async (req, res) => {
 };
 
 // NOTE - Controlador para obtener un atleta por su ID
-export const getAtletaById = async (req, res) => {
+const getAtletaById = async (req, res) => {
   try {
     const atleta = await Atleta.findById(req.params.id);
     if (!atleta) {
@@ -43,7 +43,7 @@ export const getAtletaById = async (req, res) => {
 };
 
 // NOTE - Actualizar un atleta por su ID
-export const updateAtleta = async (req, res) => {
+const updateAtleta = async (req, res) => {
   try {
     const atleta = await Atleta.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -58,7 +58,7 @@ export const updateAtleta = async (req, res) => {
 };
 
 // NOTE - Eliminar un atleta por su ID
-export const deleteAtleta = async (req, res) => {
+const deleteAtleta = async (req, res) => {
   try {
     const atleta = await Atleta.findByIdAndRemove(req.params.id);
     if (!atleta) {
@@ -69,3 +69,11 @@ export const deleteAtleta = async (req, res) => {
     res.status(500).json({ message: "Error al eliminar el atleta" });
   }
 };
+
+module.exports = {
+  getAtletas,
+  createAtleta,
+  getAtletaById,
+  updateAtleta,
+  deleteAtleta,
+}

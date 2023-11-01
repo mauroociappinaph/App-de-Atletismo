@@ -1,15 +1,14 @@
-import express from "express";
+const { Router } = require("express");
 
-import {
-    getRegistros,
-    createRegistro,
-    getRegistroById,
-    updateRegistro,
-    deleteRegistro,
-} from "../controllers/registroController.js";
+const {
+  getRegistros,
+  createRegistro,
+  getRegistroById,
+  updateRegistro,
+  deleteRegistro,
+} = require("../controllers/registroController.js")
 
-
-const router = express.Router();
+const router = Router();
 
 //SECTION -  Rutas para Registros
 
@@ -25,4 +24,4 @@ router.put("/registros/:id", updateRegistro);
 //LINK - Eliminar un registro por su ID
 router.delete("/registros/:id", deleteRegistro);
 
-export default router;
+module.exports = router;
