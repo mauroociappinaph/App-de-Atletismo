@@ -56,7 +56,7 @@ import { getAtletas } from "../redux/actions.JS";
   },
 ]; */
 
-const AllAtletas = () => {
+const AllAtletas = ( ) => {
   const atletas = useSelector((state) => state.AllAtletas);
   const dispatch = useDispatch();
 
