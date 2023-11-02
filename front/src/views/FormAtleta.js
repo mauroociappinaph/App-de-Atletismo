@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
 import { useDispatch } from "react-redux";
+import { createAtleta } from "../redux/actions";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -12,33 +13,39 @@ const FormAtleta = () => {
   const [nacionalidad, setNacionalidad] = useState("");
   const [sexo, setSexo] = useState("");
 
-const handleSubmit = async () => {
-  try {
-    const nuevoAtleta = {
-      nombre,
-      nacimiento,
-      nacionalidad,
-      sexo,
-    };
+  const handleSubmit = async () => {
+    try {
+      const nuevoAtleta = {
+        nombre,
+        nacimiento,
+        nacionalidad,
+        sexo,
+      };
 
-    const response = await dispatch(axiosCrearAtleta(nuevoAtleta)).unwrap();
+      const response = await dispatch(createAtleta(nuevoAtleta));
 
-    Alert.alert(
-      "Éxito",
-      "Atleta creado correctamente",
-      [
-        {
-          text: "Aceptar",
-          onPress: () => {
-            navigation.navigate("AllAtletas");
+      if (response && response.status === 200) {
+        // La solicitud se completó con éxito, puedes hacer algo aquí
+        Alert.alert("Éxito", "Atleta creado correctamente", [
+          {
+            text: "Aceptar",
+            onPress: () => {
+              navigation.navigate("AllAtletas");
+            },
           },
-        },
-      ]
-    );
-  } catch (error) {
-    console.error("Error al crear el atleta:", error);
-  }
-};
+        ]);
+      } else {
+        // La solicitud no se completó con éxito, maneja el error aquí
+        Alert.alert("Error", "No se pudo crear el atleta", [
+          {
+            text: "Aceptar",
+          },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error al crear el atleta:", error);
+    }
+  };
 
   return (
     <View style={styles.container}>

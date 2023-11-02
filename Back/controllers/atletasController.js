@@ -13,7 +13,12 @@ const getAtletas = async (req, res) => {
 
 // NOTE - Controller to create a new athlete
 const createAtleta = async (req, res) => {
-  const { nombre, nacimiento } = req.body;
+  const { nombre, nacimiento, nacionalidad, sexo } = req.body;
+
+  //NOTE - Valida que todos los campos requeridos estén presentes
+  if (!nombre || !nacimiento || !nacionalidad || !sexo) {
+    return res.status(400).json({ message: "Faltan campos obligatorios en la solicitud" });
+  }
 
   // ANCHOR - Prevent duplicate athlete by name
   const existingAtleta = await Atleta.findOne({ nombre: { $regex: new RegExp("^" + nombre + "$", "i") }});
@@ -22,12 +27,13 @@ const createAtleta = async (req, res) => {
   }
 
   try {
-    const savedAtleta = await Atleta.create({ nombre, nacimiento });
+    const savedAtleta = await Atleta.create({ nombre, nacimiento, nacionalidad, sexo });
     res.json(savedAtleta);
   } catch (error) {
     res.status(400).json({ message: "Error al crear el atleta", error });
   }
 };
+
 
 // NOTE - Controlador para obtener un atleta por su ID
 const getAtletaById = async (req, res) => {
