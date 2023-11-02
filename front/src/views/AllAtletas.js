@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 import CardAtleta from "../components/Atletas/CardAtleta";
 import Boton from "../components/Boton";
 import { useDispatch, useSelector } from "react-redux";
-import { getAtletas } from '../redux/actions'; 
+import { getAtletas } from "../redux/actions"; 
 
-const AllAtletas = ( ) => {
+const AllAtletas = ( { navigation }) => {
   const atletas = useSelector((state) => state.allAthletas);
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const AllAtletas = ( ) => {
       <FlatList
         data={atletas}
         renderItem={({ item }) => <CardAtleta item={item} />}
-        keyExtractor={(item) => Number(item.id)}
+        keyExtractor={(item) => String(item.id)}
       />
       <Boton
         onPress={() => navigation.navigate("FormAtleta")}

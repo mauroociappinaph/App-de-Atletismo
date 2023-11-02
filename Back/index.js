@@ -12,7 +12,7 @@ const tablaGeneralRoutes = require("./routes/tablaGeneralRoutes.js")
 //SECTION - Importa las rutas
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 
 //SECTION - Configuración de Dotenv
 
