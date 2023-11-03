@@ -35,14 +35,8 @@ const userSchema = new Schema({
     type: Boolean,
     default: true, // Usuario activo por defecto
   },
-  token: {
-    type: String,
-  },
-  confirmado: {
-    type: Boolean,
-    default: false,
-  },
 });
 
 const User = mongoose.model("User", userSchema);
-export default User;
+
+module.exports = User;

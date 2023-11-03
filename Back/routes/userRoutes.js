@@ -1,12 +1,9 @@
 const { Router } = require("express");
 const router = Router();
+const {registrar , perfil} = require("../controllers/userControllers.js");
 
-router.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+router.get('/', registrar);
 
-router.get("/login", (req, res) => {
-    res.send("Login");
-});
+router.get("/perfil", perfil);
 
 module.exports = router
