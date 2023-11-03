@@ -8,6 +8,8 @@ const atletasRoutes = require("./routes/atletasRoutes.js")
 const registrosRoutes = require("./routes/registrosRoutes.js")
 const competicionRoutes = require("./routes/competicionesRoutes.js")
 const tablaGeneralRoutes = require("./routes/tablaGeneralRoutes.js")
+const userRoutes = require("./routes/userRoutes.js")
+
 
 //SECTION - Importa las rutas
 
@@ -35,6 +37,7 @@ app.use((req, res, next) => {
 });
 
 //SECTION - Rutas
+app.use("/", userRoutes); //NOTE - Ruta de usuario
 app.use("/", atletasRoutes); //NOTE -  Ruta de atleta
 app.use("/", registrosRoutes); //NOTE - Ruta de registro
 app.use("/", competicionRoutes); //NOTE - Ruta de competición
