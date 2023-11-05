@@ -8,10 +8,10 @@ const conectarToDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    const url = `${db.connection.host}:${db.connection.port}`;
-    console.log(`DB Conectada ${url}`);
+    const { host, port } = db.connection;
+    console.log(`DB Conectada ${host}:${port}`);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     process.exit(1);
   }
 };
