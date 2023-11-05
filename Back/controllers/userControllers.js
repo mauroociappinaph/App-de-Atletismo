@@ -9,7 +9,7 @@ const registerUsers = async (req, res) => {
     res.status(400).json({ message: "Error registering user", error });
   }
 };
-
+// NOTE - Controller to get user profile
 const perfil = (req, res) => {
   const user = req.user;
   if (!user) {
@@ -19,12 +19,19 @@ const perfil = (req, res) => {
   res.json({ nombre, email, role, created_at, is_active });
 };
 
-module.exports = perfil;
-
-
-module.exports = perfil;
+// Controller to get all users
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    console.error("Error getting users", error);
+    res.status(400).json({ message: "Error getting users" });
+  }
+};
 
 module.exports = {
   registerUsers,
   perfil,
+  getAllUsers,
 };
