@@ -1,9 +1,13 @@
 const { Router } = require("express");
 const router = Router();
-const {registrar , perfil} = require("../controllers/userControllers.js");
+const { registerUsers, perfil } = require("../controllers/userControllers.js");
 
-router.get('/', registrar);
+//SECTION -  Rutas para Users
 
-router.get("/perfil", perfil);
+//NOTE - Ruta para crear registros de Users
+router.route("/users").post(registerUsers);
 
-module.exports = router
+//NOTE - Ruta para perfil de Users
+router.route("/perfil").get(perfil); 
+
+module.exports = router;
