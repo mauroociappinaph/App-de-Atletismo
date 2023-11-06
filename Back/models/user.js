@@ -23,13 +23,21 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
+  confirmado: {
+    type: Boolean,
+    default: false,
+  },
   role: {
     type: String,
-    default: "user", // Rol predeterminado (puede ser "user", "admin", u otros)
+    default: Date.now(), 
+  },
+  token: {
+    type: String,
+    default: Date.now(),
   },
   created_at: {
     type: Date,
-    default: Date.now, // Fecha de creación automática
+    default: Date.now(), // Fecha de creación automática
   },
   is_active: {
     type: Boolean,
