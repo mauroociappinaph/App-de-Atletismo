@@ -57,6 +57,7 @@ const updateAtleta = async (req, res) => {
 };
 
 // NOTE - Eliminar un atleta por su ID
+
 const deleteAtleta = async (req, res) => {
   try {
     const atleta = await Atleta.findByIdAndRemove(req.params.id);

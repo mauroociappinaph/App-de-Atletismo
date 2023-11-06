@@ -3,7 +3,9 @@ const User = require("../models/user.js");
 // NOTE - Controller to register all users
 const registerUsers = async (req, res) => {
   try {
-    const user = await User.create(req.body);
+    const { nombre, email, role, created_at, is_active } = req.body;
+    console.log(req.body);
+    const user = await User.create({ nombre, email, role, created_at, is_active });
     res.json(user);
   } catch (error) {
     res.status(400).json({ message: "Error registering user", error });
