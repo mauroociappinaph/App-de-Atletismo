@@ -19,6 +19,11 @@ const Landing = ({ navigation }) => {
         titulo="Log In"
         color="#27ae60"
       />
+      <Boton
+        onPress={() => navigation.navigate("Register")}
+        titulo="Register"
+        color="#27ae60"
+      />
     </View>
   );
 };
