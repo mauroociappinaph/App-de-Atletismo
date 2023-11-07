@@ -15,18 +15,13 @@ const Landing = ({ navigation }) => {
       <Image source={Logo} style={{ height: 450, width: 450 }} />
 
       <Boton
-        onPress={() => navigation.navigate("FormCompeticion")}
-        titulo="Crear competición"
-        color="#2980b9"
-      />
-      <Boton
-        onPress={() => navigation.navigate("AllAtletas")}
-        titulo="Ver atletas"
+        onPress={() => navigation.navigate("Login")}
+        titulo="Log In"
         color="#27ae60"
       />
       <Boton
-        onPress={() => navigation.navigate("AllCompeticiones")}
-        titulo="Ver Competición"
+        onPress={() => navigation.navigate("Register")}
+        titulo="Register"
         color="#27ae60"
       />
     </View>
