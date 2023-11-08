@@ -2,7 +2,7 @@ const User = require("../models/user.js");
 
 // NOTE - Controller to register all users
 const registerUsers = async (req, res) => {
-  const { nombre, email, password ,repetirPassword ,role, created_at, is_active } = req.body;
+  const { nombre, email, password ,repetirPassword, created_at, is_active } = req.body;
   console.log(req.body);
   //STUB -  Prevenir usuarios duplicados
   const userExists = await User.findOne({ email });
@@ -13,7 +13,6 @@ const registerUsers = async (req, res) => {
     const user = await User.create({
       nombre,
       email,
-      role,
       password,
       repetirPassword,
       created_at,
