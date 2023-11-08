@@ -12,29 +12,38 @@ import Logo from "../../assets/AthlonSinFondo.png";
 import Boton from "../components/Boton";
 
 const Register = ({ navigation }) => {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     fullName: "",
+    email: "",
     sex: "Seleccionar",
     nationality: "",
     birthdate: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleInputChange = (key, value) => {
-    setFormData({ ...formData, [key]: value });
+    setForm({ ...form, [key]: value });
   };
 
   return (
     <View style={styles.container}>
-      <Image source={Logo} style={{ height: 450, width: 450 }} />
+      <Image source={Logo} style={{ height: 300, width: 300 }} />
       <TextInput
         style={styles.input}
         placeholder="Nombre completo"
         onChangeText={(text) => handleInputChange("fullName", text)}
-        value={formData.fullName}
+        value={form.fullName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Correo electrónico"
+        onChangeText={handleInputChange}
+        value={form.email}
       />
       <Picker
         style={styles.input}
-        selectedValue={formData.sex}
+        selectedValue={form.sex}
         onValueChange={(itemValue) => handleInputChange("sex", itemValue)}>
         <Picker.Item label="Hombre" value="Hombre" />
         <Picker.Item label="Mujer" value="Mujer" />
@@ -44,7 +53,7 @@ const Register = ({ navigation }) => {
         style={styles.input}
         placeholder="Nacionalidad"
         onChangeText={(text) => handleInputChange("nationality", text)}
-        value={formData.nationality}
+        value={form.nationality}
       />
       {/*  <DatePickerIOS
         style={{ width: 200 }}
@@ -69,6 +78,20 @@ const Register = ({ navigation }) => {
         }}
         onDateChange={(date) => handleInputChange("birthdate", date)}
       /> */}
+      <TextInput
+        style={styles.input}
+        placeholder="Contraseña"
+        secureTextEntry
+        onChangeText={(text) => handleInputChange("password", text)}
+        value={form.password}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Confirmar Contraseña"
+        secureTextEntry
+        onChangeText={(text) => handleInputChange("confirmPassword", text)}
+        value={form.confirmPassword}
+      />
       <Boton
         onPress={() => navigation.navigate("Home")}
         titulo="Register"
