@@ -1,50 +1,49 @@
 import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  Picker,
-  StyleSheet,
-  Button,
-  DatePickerIOS,
-  Image,
-  Text,
-} from "react-native";
+import { View, TextInput, StyleSheet, Button, Image, Text } from "react-native";
 import Logo from "../../assets/AthlonSinFondo.png";
 import Boton from "../components/Boton";
-import validation from "./validations/validationRegister";
+import {
+  validation,
+  hasErrorsOrEmptyFields,
+} from "./validations/validationRegister";
+import axios from "axios";
 
 const Register = ({ navigation }) => {
   const [form, setForm] = useState({
-    fullName: "",
+    nombre: "",
     email: "",
-    sex: "Seleccionar",
-    nationality: "",
-    birthdate: "",
     password: "",
-    confirmPassword: "",
+    repetirPassword: "",
   });
   const [error, setError] = useState({
-    fullName: "",
+    nombre: "",
     email: "",
-    sex: "Seleccionar",
-    nationality: "",
-    birthdate: "",
     password: "",
-    confirmPassword: "",
+    repetirPassword: "",
   });
-  const [sexError, setSexError] = useState("");
-
-  const handleSubmit = () => {
-    setSexError("");
-    if (!form.sex || form.sex === "Seleccionar") {
-      setSexError("Por favor, selecciona un género.");
-      return;
-    }
-  };
 
   const handleInputChange = (key, value) => {
     setForm({ ...form, [key]: value });
     setError(validation({ ...form, [key]: value }));
+  };
+
+  const [errorRegister, setErrorRegister] = useState("");
+
+  const handleSubmit = () => {
+    axios
+      .post("/user", form)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Registro exitoso");
+          navigation.navigate("Home");
+        } else {
+          setErrorRegister("Algo salió mal");
+        }
+      })
+      .catch((error) => {
+        console.error("Error en la solicitud:", error);
+        setErrorRegister("Error en la solicitud");
+      });
   };
 
   return (
@@ -54,9 +53,9 @@ const Register = ({ navigation }) => {
         style={styles.input}
         placeholder="Nombre completo"
         onChangeText={(text) => handleInputChange("fullName", text)}
-        value={form.fullName}
+        value={form.nombre}
       />
-      {error.fullName && <Text style={styles.error}>{error.fullName}</Text>}
+      {error.nombre && <Text style={styles.error}>{error.nombre}</Text>}
 
       <TextInput
         style={styles.input}
@@ -66,45 +65,6 @@ const Register = ({ navigation }) => {
       />
       {error.email && <Text style={styles.error}>{error.email}</Text>}
 
-      <Picker
-        style={styles.input}
-        selectedValue={form.sex}
-        onValueChange={(itemValue) => handleInputChange("sex", itemValue)}>
-        <Picker.Item label="Hombre" value="Hombre" />
-        <Picker.Item label="Mujer" value="Mujer" />
-        <Picker.Item label="Seleccionar" value="Seleccionar" />
-      </Picker>
-      {sexError !== "" && <Text style={styles.error}>{sexError}</Text>}
-
-      <TextInput
-        style={styles.input}
-        placeholder="Nacionalidad"
-        onChangeText={(text) => handleInputChange("nationality", text)}
-        value={form.nationality}
-      />
-      {/*  <DatePickerIOS
-        style={{ width: 200 }}
-        date={formData.birthdate}
-        mode="date"
-        placeholder="Fecha de Nacimiento"
-        format="YYYY-MM-DD"
-        minDate="1900-01-01"
-        maxDate={new Date()}
-        confirmBtnText="Confirmar"
-        cancelBtnText="Cancelar"
-        customStyles={{
-          dateIcon: {
-            position: "absolute",
-            left: 0,
-            top: 4,
-            marginLeft: 0,
-          },
-          dateInput: {
-            marginLeft: 36,
-          },
-        }}
-        onDateChange={(date) => handleInputChange("birthdate", date)}
-      /> */}
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
@@ -119,13 +79,19 @@ const Register = ({ navigation }) => {
         placeholder="Confirmar Contraseña"
         secureTextEntry
         onChangeText={(text) => handleInputChange("confirmPassword", text)}
-        value={form.confirmPassword}
+        value={form.repetirPassword}
       />
-      {error.confirmPassword && (
-        <Text style={styles.error}>{error.confirmPassword}</Text>
+      {error.repetirPassword && (
+        <Text style={styles.error}>{error.repetirPassword}</Text>
       )}
 
-      <Boton onPress={handleSubmit} titulo="Register" color="#8E94F2" />
+      <Boton
+        onPress={handleSubmit}
+        disabled={hasErrorsOrEmptyFields()}
+        titulo="Register"
+        color="#8E94F2"
+      />
+      {errorRegister && <Text style={styles.error}>{errorRegister}</Text>}
     </View>
   );
 };
@@ -146,7 +112,9 @@ const styles = StyleSheet.create({
   },
   error: {
     color: "#E46962",
-
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 10,
   },
 });
