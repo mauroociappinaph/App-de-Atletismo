@@ -9,12 +9,11 @@
 const validation = (form) => {
   const errors = {};
   if (form.fullName && !/^[A-Z][a-zA-Z ]+$/.test(form.fullName))
-    errors.fullName = "Invalid name";
+    errors.fullName = "Nombre inválido";
   if (form.email && !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(form.email))
-    errors.email = "Invalid email format";
+    errors.email = "Formato inválido";
 
-  if (!form.sex || form.sex === "Seleccionar")
-    errors.sex = "Please select a gender.";
+  if (!form.sex || form.sex === "Seleccionar") errors.sex = "Escoge un sexo";
   /*  if (form.birthdate && !isAdult(form.birthdate))
       errors.birthdate = "Must be 18 years or older"; */
   if (
@@ -22,10 +21,10 @@ const validation = (form) => {
     !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(form.password)
   )
     errors.password =
-      "Password must contain at least 8 characters, one lowercase letter, one uppercase letter, and one digit.";
+      "La contraseña debe contener al menos 8 caracteres, una letra minúscula, una letra mayúscula y un número";
 
   if (form.confirmPassword && form.password !== form.confirmPassword)
-    errors.confirmPassword = "Passwords do not match.";
+    errors.confirmPassword = "Las constraseñas no coinciden";
   return errors;
 };
 

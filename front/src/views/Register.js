@@ -7,9 +7,11 @@ import {
   Button,
   DatePickerIOS,
   Image,
+  Text,
 } from "react-native";
 import Logo from "../../assets/AthlonSinFondo.png";
 import Boton from "../components/Boton";
+import validation from "./validations/validationRegister";
 
 const Register = ({ navigation }) => {
   const [form, setForm] = useState({
@@ -21,9 +23,28 @@ const Register = ({ navigation }) => {
     password: "",
     confirmPassword: "",
   });
+  const [error, setError] = useState({
+    fullName: "",
+    email: "",
+    sex: "Seleccionar",
+    nationality: "",
+    birthdate: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [sexError, setSexError] = useState("");
+
+  const handleSubmit = () => {
+    setSexError("");
+    if (!form.sex || form.sex === "Seleccionar") {
+      setSexError("Por favor, selecciona un género.");
+      return;
+    }
+  };
 
   const handleInputChange = (key, value) => {
     setForm({ ...form, [key]: value });
+    setError(validation({ ...form, [key]: value }));
   };
 
   return (
@@ -35,12 +56,16 @@ const Register = ({ navigation }) => {
         onChangeText={(text) => handleInputChange("fullName", text)}
         value={form.fullName}
       />
+      {error.fullName && <Text style={styles.error}>{error.fullName}</Text>}
+
       <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
-        onChangeText={handleInputChange}
+        onChangeText={(text) => handleInputChange("email", text)}
         value={form.email}
       />
+      {error.email && <Text style={styles.error}>{error.email}</Text>}
+
       <Picker
         style={styles.input}
         selectedValue={form.sex}
@@ -49,6 +74,8 @@ const Register = ({ navigation }) => {
         <Picker.Item label="Mujer" value="Mujer" />
         <Picker.Item label="Seleccionar" value="Seleccionar" />
       </Picker>
+      {sexError !== "" && <Text style={styles.error}>{sexError}</Text>}
+
       <TextInput
         style={styles.input}
         placeholder="Nacionalidad"
@@ -85,6 +112,8 @@ const Register = ({ navigation }) => {
         onChangeText={(text) => handleInputChange("password", text)}
         value={form.password}
       />
+      {error.password && <Text style={styles.error}>{error.password}</Text>}
+
       <TextInput
         style={styles.input}
         placeholder="Confirmar Contraseña"
@@ -92,11 +121,11 @@ const Register = ({ navigation }) => {
         onChangeText={(text) => handleInputChange("confirmPassword", text)}
         value={form.confirmPassword}
       />
-      <Boton
-        onPress={() => navigation.navigate("Home")}
-        titulo="Register"
-        color="#8E94F2"
-      />
+      {error.confirmPassword && (
+        <Text style={styles.error}>{error.confirmPassword}</Text>
+      )}
+
+      <Boton onPress={handleSubmit} titulo="Register" color="#8E94F2" />
     </View>
   );
 };
@@ -112,8 +141,13 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
-    marginBottom: 20,
+    marginBottom: 11,
     paddingHorizontal: 10,
+  },
+  error: {
+    color: "#E46962",
+
+    marginBottom: 10,
   },
 });
 
