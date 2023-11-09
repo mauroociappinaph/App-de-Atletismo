@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput, StyleSheet, Button, Image, Text } from "react-native";
 import Logo from "../../assets/AthlonSinFondo.png";
 import Boton from "../components/Boton";
-import {
-  validation,
-  hasErrorsOrEmptyFields,
-} from "./validations/validationRegister";
+import validation from "./validations/validationRegister";
 import axios from "axios";
 
 const Register = ({ navigation }) => {
@@ -28,7 +25,18 @@ const Register = ({ navigation }) => {
   };
 
   const [errorRegister, setErrorRegister] = useState("");
-
+  const hasErrorsOrEmptyFields = () => {
+    return (
+      error.nombre ||
+      error.email ||
+      error.password ||
+      error.repetirPassword ||
+      !form.nombre ||
+      !form.email ||
+      !form.password ||
+      !form.repetirPassword
+    );
+  };
   const handleSubmit = () => {
     axios
       .post("/user", form)
@@ -52,7 +60,7 @@ const Register = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Nombre completo"
-        onChangeText={(text) => handleInputChange("fullName", text)}
+        onChangeText={(text) => handleInputChange("nombre", text)}
         value={form.nombre}
       />
       {error.nombre && <Text style={styles.error}>{error.nombre}</Text>}
@@ -78,7 +86,7 @@ const Register = ({ navigation }) => {
         style={styles.input}
         placeholder="Confirmar Contraseña"
         secureTextEntry
-        onChangeText={(text) => handleInputChange("confirmPassword", text)}
+        onChangeText={(text) => handleInputChange("repetirPassword", text)}
         value={form.repetirPassword}
       />
       {error.repetirPassword && (
