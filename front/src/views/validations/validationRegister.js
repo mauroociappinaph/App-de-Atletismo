@@ -1,4 +1,4 @@
-export const validation = (form) => {
+const validation = (form) => {
   const errors = {};
   if (form.nombre && !/^[A-Z][a-zA-Z ]+$/.test(form.nombre))
     errors.nombre = "Nombre inválido";
@@ -18,15 +18,4 @@ export const validation = (form) => {
   return errors;
 };
 
-export const hasErrorsOrEmptyFields = () => {
-  return (
-    error.nombre ||
-    error.email ||
-    error.password ||
-    error.repetirPassword ||
-    !form.nombre ||
-    !form.email ||
-    !form.password ||
-    !form.repetirPassword
-  );
-};
+export default validation;
