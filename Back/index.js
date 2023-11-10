@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 //SECTION - Rutas
-app.use("/", userRoutes); //NOTE - Ruta de usuario
+app.use("/users", userRoutes); //NOTE - Ruta de usuario
 app.use("/", atletasRoutes); //NOTE -  Ruta de atleta
 app.use("/", registrosRoutes); //NOTE - Ruta de registro
 app.use("/", competicionRoutes); //NOTE - Ruta de competición
