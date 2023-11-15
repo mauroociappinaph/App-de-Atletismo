@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const generarID = require("../helpers/generarID.js") 
+
 
 const userSchema = new Schema({
   nombre: {
@@ -29,7 +31,7 @@ const userSchema = new Schema({
   },
   token: {
     type: String,
-    default: Date.now(),
+    default: generarID(),
   },
   created_at: {
     type: Date,

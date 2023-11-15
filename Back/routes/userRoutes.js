@@ -16,11 +16,11 @@ router.route("/register").post(registerUsers);
 //NOTE - Ruta para obtener todos los usuarios
 router.route("/allusers").get(getAllUsers);
 
-//NOTE - Ruta para obtener un usuario por ID y para borrar un usuario
+//NOTE - Ruta para obtener un usuario por ID, actualizar usuario y para borrar un usuario.
 router
   .route("/:id")
   .get(getUserById)
-  //.delete(deleteUsers)
+  //.delete(deleteUsers) //FIXME - Se rompe app
   //.put(updateAtleta)
  
 

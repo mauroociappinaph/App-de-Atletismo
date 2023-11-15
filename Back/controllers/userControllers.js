@@ -1,6 +1,7 @@
 const User = require("../models/user.js");
 
 // NOTE - Controller to register all users
+
 const registerUsers = async (req, res) => {
   const { nombre, email, password ,repetirPassword, created_at, is_active } = req.body;
   console.log(req.body);
