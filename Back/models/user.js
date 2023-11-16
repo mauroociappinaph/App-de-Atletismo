@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
 const generarID = require("../helpers/generarID.js") 
+const { Schema } = mongoose;
 
 
 const userSchema = new Schema({
@@ -12,7 +12,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true, // El correo electrónico debe ser único
+    unique: true, 
     trim: true,
   },
   password: {
