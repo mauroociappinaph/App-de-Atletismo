@@ -12,12 +12,13 @@ const getCompeticiones = async (req, res) => {
 
 // NOTE Controlador para crear una nueva competición
 const createCompeticion = async (req, res) => {
-  const { nombre, categoria, disciplinas, fechaInicio, fechaFin, lugar, descripcion } = req.body;
+  const { nombre, categoria, subcategoria ,disciplinas, fechaInicio, fechaFin, lugar, descripcion } = req.body;
 
   // Realizar una búsqueda para verificar si ya existe una competición con las mismas características
   const existingCompeticion = await Competicion.findOne({
     nombre,
     categoria,
+    subcategoria,
     disciplinas,
     fechaInicio,
     fechaFin,
