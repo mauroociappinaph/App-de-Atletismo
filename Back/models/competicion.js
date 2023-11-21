@@ -12,6 +12,11 @@ const competicionSchema = new mongoose.Schema(
       enum: ["Hombres", "Mujeres"],
       required: true,
     },
+    subcategoria: {
+      type: String,
+      enum: ["mayores", "U20" , "U18", "U16" ,"U14" ],
+      required: true,
+    },
     disciplinas: {
       type: [String],
       enum: [
@@ -22,6 +27,7 @@ const competicionSchema = new mongoose.Schema(
         "Lanzamiento de disco",
         "Lanzamiento de jabalina",
         "Lanzamiento de martillo",
+        "Lanzamiento de bala",
       ],
       required: true,
     },
@@ -44,7 +50,7 @@ const competicionSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-)
+);
 
 const Competicion = mongoose.model("Competicion", competicionSchema);
 
