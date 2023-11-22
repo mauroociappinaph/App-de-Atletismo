@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const generarID = require("../helpers/generarID.js");
 const { Schema } = mongoose;
 
@@ -43,17 +42,7 @@ const userSchema = new Schema({
   },
 });
 
-veterinarioSchema.pre("save", async function (next) {
-  const veterinario = this;
-  if (veterinario.isModified("password")) {
-    veterinario.password = await bcrypt.hash(veterinario.password, 8);
-    veterinario.repetirPassword = await bcrypt.hash(
-      veterinario.repetirPassword,
-      8
-    );
-  }
-  next();
-});
+
 
 const User = mongoose.model("User", userSchema);
 
