@@ -34,6 +34,7 @@ const createCompeticion = async (req, res) => {
     const nuevaCompeticion = await Competicion.create({
       nombre,
       categoria,
+      subcategoria,
       disciplinas,
       fechaInicio,
       fechaFin,
